@@ -1,0 +1,134 @@
+<!-- wp:paragraph -->
+<p><em>"Sea views" is a phrase estate agents love. But from how much of the country can you actually see the sea? I traced 360 sight lines from every 1 km square of the United Kingdom, over the hills and valleys, to find out. Standing on the bare ground, the answer is about a quarter of the land.</em></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:buttons -->
+<div class="wp-block-buttons"><!-- wp:button -->
+<div class="wp-block-button"><a class="wp-block-button__link wp-element-button" href="https://maps.tristanhotham.com/sea-view/">Explore the interactive version</a></div>
+<!-- /wp:button -->
+<!-- wp:button -->
+<div class="wp-block-button"><a class="wp-block-button__link wp-element-button" href="https://doi.org/10.5281/zenodo.24106076">Read the paper</a></div>
+<!-- /wp:button --></div>
+<!-- /wp:buttons -->
+
+<!-- wp:paragraph -->
+<p>Nowhere in the UK is more than {{farthest_coast.km|f0}} km from the coast (counting tidal estuaries), so you might think the sea is never far out of sight. But the sea is low and flat, the land gets in the way, and the Earth curves. A beach-front café can lose its view behind a dune, and a hill farm 30 km inland can look straight down a valley to the water. So I did it properly: for each of the UK's {{n.squares|int}} squares of 1 km, I stood an imaginary person in the middle, eyes 1.7 m above the ground, and looked out in every direction, one degree at a time, as far as 50 km.</p>
+<p>Three things to keep in mind throughout. Every figure here is an upper bound: the terrain is bare, with no buildings or trees. The headline is resolution-sensitive: sharper terrain lowers it by up to {{z10.max_abs_diff|f1}} points in my test areas. And "sea" means OpenStreetMap's coastline, which includes tidal estuaries and sea lochs.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading -->
+<h2 class="wp-block-heading">A quarter of the land</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>From {{main.uk_km2|int}} of those squares, {{main.uk_pc|f1}}% of the UK's land, there is sea in view. Usually it is close: where you can see the sea at all, the nearest bit you can see is typically about {{near.median_km|f0}} km away. And usually it is a slice, not a panorama. Among squares with a sea view, the median one sees sea across only {{horizon.median_pc_seaview|f0}}% of the horizon. Only {{horizon.over_half_km2|int}} squares look out on sea across more than half of it: headlands, small islands and the tips of peninsulas.</p>
+<!-- /wp:paragraph -->
+
+{{IMG|b_map.png|Map of the United Kingdom in which the coasts are coloured in shades of blue by the distance to the nearest sea in view, darkest within 2 km, fading inland, and most of central England is sand coloured, with no sea in view|Every 1 km square of the UK, coloured by the distance to the nearest sea you could see standing on the bare ground. Sand: no sea within 50 km.}}
+
+<!-- wp:heading -->
+<h2 class="wp-block-heading">Scotland looks out, England looks in</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>The nations are very different. In Scotland, with its long, ragged, mountainous coast and its sea lochs reaching deep inland, {{main.Scotland.pc|f0}}% of the land has a sea view. Wales comes next at {{main.Wales.pc|f0}}%, then Northern Ireland at {{main.Northern Ireland.pc|f0}}%. England, with its great lowland middle, manages only {{main.England.pc|f0}}%.</p>
+<!-- /wp:paragraph -->
+
+{{IMG|b_nations.png|Two bar charts: the share of land with a sea view by nation for four eye heights, highest in Scotland and lowest in England, and the share of land and of people in Great Britain with a sea view, rising with eye height|Left: land with a sea view by nation and eye height. Right: land and people in Great Britain.}}
+
+<!-- wp:paragraph -->
+<p>What about people? Most of us live in lowland towns, and many coastal towns look out across flat land, estuaries or sea walls. Splitting each constituency's population between its towns and villages, and checking each settlement's own point, {{pop.1.7.gb_pc|f0}}% of people in Great Britain live somewhere the terrain lets them see the sea. In Northern Ireland it is about {{pop.1.7.ni_pc|f0}}% of the settlement population. That counts the land only: in real streets, houses and trees hide much of it.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading -->
+<h2 class="wp-block-heading">How far inland?</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Almost every square right on the coast sees the sea ({{by_dist.0.pc|f0}}% within a kilometre), but even there not all: {{no_seaview_by_coast.within_2km_pc|f0}}% of squares within 2 km of the coast have no sea view, tucked behind dunes, cliffs or the lie of the land. Further in, height decides. On low ground, below 50 m, half the squares have lost the sea by about {{reach.0 to 50.km|f0}} km inland. On ground of 150 to 300 m the half-way point is about {{reach.150 to 300.km|f0}} km in. Higher still does no better at that half-way mark ({{reach.300+.km|f0}} km), because most land above 300 m is in mountain country, where the next mountain hides the sea; but the high tops keep the sea in view more often further in: {{seaview_far_inland.n_300_40km|int}} squares above 300 m see it from 40 km or more from the coast.</p>
+<!-- /wp:paragraph -->
+
+{{IMG|b_profile.png|Line chart of the share of squares with a sea view against distance from the coast for four bands of ground height: all fall with distance, low ground fastest, ground above 300 m slowest|The share of squares that see the sea, by distance from the coast and height of the ground. Dots mark where it falls below half.}}
+
+<!-- wp:heading -->
+<h2 class="wp-block-heading">Climb the stairs</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Height buys sea. Raise your eyes to an upstairs window, 5 m up, and the share of UK land with a sea view goes from {{main.uk_pc|f0}}% to {{eyes.5.uk_pc|f0}}%. From a fifth floor, 15 m up, it is {{eyes.15.uk_pc|f0}}%, and from the top of a 50 m tower, {{eyes.50.uk_pc|f0}}%. For people it is {{pop.5.gb_pc|f0}}% from an upstairs window. (These heights are applied everywhere, moorland included, so they show what a tall building could see, not what any actual one does.)</p>
+<!-- /wp:paragraph -->
+
+{{IMG|b_eyes.png|Four small maps of the UK side by side showing the land with a sea view in blue at eye heights of 1.7, 5, 15 and 50 m; the blue spreads inland as the eye rises|The land with the sea in view as you raise your eyes from standing height to the top of a tall tower.}}
+
+<!-- wp:pullquote -->
+<figure class="wp-block-pullquote"><blockquote><p>Standing on the bare ground, you could see the sea from about a quarter of the UK.</p></blockquote></figure>
+<!-- /wp:pullquote -->
+
+<!-- wp:heading -->
+<h2 class="wp-block-heading">The sea-view desert</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Somewhere has to be the farthest from any view of the sea. In this model it is a square near {{farthest_seaview.0.near.name}} in {{farthest_seaview.0.county}}, {{farthest_seaview.0.km|f0}} km from the nearest square where you could see the sea. The square farthest from the coast itself is {{farthest_coast.km|f0}} km from it, near {{farthest_coast.near.name}}. Around them lies a wide stretch of inland England where no square for tens of kilometres has a sea view: {{counties.n_none|int}} counties, from Oxfordshire to West Yorkshire, have none at all.</p>
+<!-- /wp:paragraph -->
+
+{{IMG|b_farthest.png|Map of central England shaded from pale to dark brown by the distance to the nearest square with a sea view, darkest in the Midlands, with a red star at the farthest square and labelled cities|Distance from each square to the nearest square with a sea view. The star marks the farthest.}}
+
+<!-- wp:heading -->
+<h2 class="wp-block-heading">Checking against the hills</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>To check the model, I took {{validation.n|int}} hills and viewpoints whose sea view is written down somewhere: Black Combe ("half the view is the glittering sea"), Dunkery Beacon over the Bristol Channel, Leith Hill Tower, where the National Trust says you can see the English Channel on a clear day, Snowdon, Scafell Pike, Slieve Donard and others. The model finds the sea from {{validation.terrain_50|int}} of them at the height of the terrain data and from {{validation.published_50|int}} at their real summit heights. The terrain data rounds summits down, and Pendle Hill is the clearest case: at its real height of 557 m the model sees the Lancashire coast about {{validation.points.2.published_50_near_km|f0}} km away, just as George Fox did in 1652, when he wrote that from the top "I saw the sea bordering upon Lancashire". The one it never finds is Worcestershire Beacon, whose "Bristol Channel" view I could not reproduce even looking 100 km out.</p>
+<!-- /wp:paragraph -->
+
+{{IMG|b_fans.png|Three maps with red sight lines fanning out from Pendle Hill, Leith Hill and Worcestershire Beacon to where each first meets visible sea: Pendle's reach the Lancashire coast to the west, Leith Hill's reach the English Channel to the south, and Worcestershire Beacon has none|Sight lines from three viewpoints, every half degree, ending at the first visible sea.}}
+
+<!-- wp:heading -->
+<h2 class="wp-block-heading">How I did this</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>The land is the open AWS Terrain Tiles, a mosaic of satellite radar and other height data, at about 175 m resolution. The sea is OpenStreetMap's coastline, which runs up tidal estuaries and sea lochs. From the centre of every Ordnance Survey 1 km square in Great Britain, and every Irish Grid square in Northern Ireland, I traced a sight line every degree, in steps of about 90 m, out to 50 km. Each step asks whether the ground, or the sea surface, rises above everything nearer, allowing for the curve of the Earth and the usual slight bending of light near the ground. A sight line stops at the first sea it can see. I wrote the plan, with every check, before running it.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Most of the checks move the headline by a point or so: looking 100 km out, ignoring refraction, leaving out estuaries and narrow sea lochs, needing the sea on at least three sight lines, twice as many sight lines, four points per square, or random errors in the heights. Looking only 25 km out lowers it to {{sens.0.pc|f0}}%. The check that matters most is sharper terrain. With heights every 88 m instead of 175 m, the share falls in all four test areas, by up to {{z10.max_abs_diff|f1}} points (about {{z10.rel_drop_pc|f0}}% of its value overall), because small ridges and dunes that the coarse data smooths away start to hide the sea from low ground. Across all the checks the share stays between {{sens_range.lo_pc|f0}}% and {{sens_range.hi_pc|f0}}%, so the headline is resolution-sensitive and "about a quarter" is, if anything, generous. The biggest caveat cannot be checked with this data. The terrain has no buildings, trees or hedges, which hide the sea from most streets and many fields. So read every figure as an upper bound: where the land itself allows a sea view, the most you could hope for on a clear day.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:buttons -->
+<div class="wp-block-buttons"><!-- wp:button -->
+<div class="wp-block-button"><a class="wp-block-button__link wp-element-button" href="https://maps.tristanhotham.com/sea-view/">Explore the interactive version</a></div>
+<!-- /wp:button -->
+<!-- wp:button -->
+<div class="wp-block-button"><a class="wp-block-button__link wp-element-button" href="https://doi.org/10.5281/zenodo.24106076">Read the paper</a></div>
+<!-- /wp:button -->
+<!-- wp:button -->
+<div class="wp-block-button"><a class="wp-block-button__link wp-element-button" href="https://github.com/Tristan-Hotham/sea-view">Data and code</a></div>
+<!-- /wp:button --></div>
+<!-- /wp:buttons -->
+
+<!-- wp:heading {"level":3} -->
+<h3 class="wp-block-heading">Notes and sources</h3>
+<!-- /wp:heading -->
+
+<!-- wp:list -->
+<ul class="wp-block-list"><!-- wp:list-item -->
+<li>Terrain: AWS Terrain Tiles (Mapzen and Tilezen; SRTM, GMTED2010, ETOPO1 and other sources, see the Terrain Tiles attribution list).</li>
+<!-- /wp:list-item -->
+<!-- wp:list-item -->
+<li>Sea: © OpenStreetMap contributors (ODbL), via OpenFreeMap vector tiles. Base map of the interactive page: OpenFreeMap Positron.</li>
+<!-- /wp:list-item -->
+<!-- wp:list-item -->
+<li>Settlements: Wikidata (CC0). Population: 2011 Census by 2010 Westminster constituency (ONS, Open Government Licence v3.0). Counties: ONS boundaries (OGL v3.0).</li>
+<!-- /wp:list-item -->
+<!-- wp:list-item -->
+<li>Viewpoint sources: Wikipedia (Black Combe; Dunkery Hill), National Trust (Leith Hill Tower), South Downs National Park Authority (Ditchling Beacon), Pendle Radicals (Pendle Hill, quoting George Fox), Cornwall Guide (Brown Willy), Wikishire (Worcestershire Beacon; Snowdon), UKHillwalking (Scafell Pike), MountainViews (Slieve Donard).</li>
+<!-- /wp:list-item -->
+<!-- wp:list-item -->
+<li>Further reading: P. F. Fisher, "Algorithm and implementation uncertainty in viewshed analysis", International Journal of Geographical Information Systems (1993); D. Nutsford and colleagues on visible blue space and well-being, Health and Place (2016).</li>
+<!-- /wp:list-item -->
+<!-- wp:list-item -->
+<li>I wrote the text, with drafting and editing assistance from Claude (Anthropic), which also helped prepare the analysis code. I reviewed and checked all text and results.</li>
+<!-- /wp:list-item --></ul>
+<!-- /wp:list -->

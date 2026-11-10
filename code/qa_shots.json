@@ -1,0 +1,9 @@
+[{"out": "qa/desktop.png", "w": 1280, "h": 800},
+ {"out": "qa/desktop_popup.png", "w": 1280, "h": 800, "eval": "(async()=>{await new Promise(r=>setTimeout(r,2500));document.querySelector('#q').value='Whitby';document.querySelector('#q').dispatchEvent(new Event('input'));document.querySelector('#sug li').click()})()"},
+ {"out": "qa/desktop_layers.png", "w": 1280, "h": 800, "eval": "document.querySelector('.chip[data-m=hz]').click();document.getElementById('lyrBtn').click();document.getElementById('eye').value=3;document.getElementById('eye').dispatchEvent(new Event('input'))"},
+ {"out": "qa/desktop_click.png", "w": 1280, "h": 800, "eval": "window.__map.jumpTo({center:[-2.30,53.87],zoom:9});setTimeout(()=>window.__map.fire('click',{lngLat:{lng:-2.6,lat:53.95},point:{x:640,y:400}}),800)"},
+ {"out": "qa/phone.png", "w": 390, "h": 800, "dpr": 2},
+ {"out": "qa/phone_popup.png", "w": 390, "h": 800, "dpr": 2, "eval": "(async()=>{await new Promise(r=>setTimeout(r,2500));document.querySelector('#q').value='Clitheroe';document.querySelector('#q').dispatchEvent(new Event('input'));document.querySelector('#sug li').click()})()"},
+ {"out": "qa/phone_full.png", "w": 390, "h": 800, "dpr": 1, "full": true},
+ {"out": "qa/desktop_full.png", "w": 1280, "h": 800, "full": true},
+ {"out": "qa/phone_zoom.png", "w": 390, "h": 800, "dpr": 2, "eval": "window.__map.jumpTo({center:[-3.0,54.4],zoom:12})"}]

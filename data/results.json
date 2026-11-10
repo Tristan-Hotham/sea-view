@@ -1,0 +1,1120 @@
+{
+ "n": {
+  "squares": 244595,
+  "gb": 230336,
+  "ni": 14259,
+  "oob_rays": 493,
+  "oob_squares": 103,
+  "dem_tiles": 450,
+  "despiked": 143,
+  "ofm_version": "20261101_080013_pt",
+  "settlements": 36692,
+  "settlements_pop": 13767,
+  "seats": 632
+ },
+ "model": {
+  "eye_m": 1.7,
+  "dmax_km": 50.0,
+  "k": 0.13,
+  "rays": 360,
+  "step_m_approx": 88
+ },
+ "main": {
+  "uk_pc": 26.278950918865878,
+  "gb_pc": 26.513441233676023,
+  "uk_km2": 64277,
+  "England": {
+   "pc": 16.433721660058477,
+   "km2": 21470,
+   "squares": 130646
+  },
+  "Scotland": {
+   "pc": 41.331373319309094,
+   "km2": 32615,
+   "squares": 78911
+  },
+  "Wales": {
+   "pc": 33.615669666490206,
+   "km2": 6985,
+   "squares": 20779
+  },
+  "Northern Ireland": {
+   "pc": 22.491058278981697,
+   "km2": 3207,
+   "squares": 14259
+  }
+ },
+ "eyes": {
+  "1.7": {
+   "uk_pc": 26.278950918865878,
+   "gb_pc": 26.513441233676023,
+   "uk_km2": 64277,
+   "England": {
+    "pc": 16.433721660058477,
+    "km2": 21470,
+    "squares": 130646
+   },
+   "Scotland": {
+    "pc": 41.331373319309094,
+    "km2": 32615,
+    "squares": 78911
+   },
+   "Wales": {
+    "pc": 33.615669666490206,
+    "km2": 6985,
+    "squares": 20779
+   },
+   "Northern Ireland": {
+    "pc": 22.491058278981697,
+    "km2": 3207,
+    "squares": 14259
+   }
+  },
+  "5": {
+   "uk_pc": 29.23363110447883,
+   "gb_pc": 29.5164455404279,
+   "uk_km2": 71504,
+   "England": {
+    "pc": 19.470936729788896,
+    "km2": 25438,
+    "squares": 130646
+   },
+   "Scotland": {
+    "pc": 44.28913586192039,
+    "km2": 34949,
+    "squares": 78911
+   },
+   "Wales": {
+    "pc": 36.57538861350402,
+    "km2": 7600,
+    "squares": 20779
+   },
+   "Northern Ireland": {
+    "pc": 24.66512378147135,
+    "km2": 3517,
+    "squares": 14259
+   }
+  },
+  "15": {
+   "uk_pc": 34.548948261411724,
+   "gb_pc": 34.91334398444012,
+   "uk_km2": 84505,
+   "England": {
+    "pc": 25.05932060683067,
+    "km2": 32739,
+    "squares": 130646
+   },
+   "Scotland": {
+    "pc": 49.3974224125914,
+    "km2": 38980,
+    "squares": 78911
+   },
+   "Wales": {
+    "pc": 41.86438230906203,
+    "km2": 8699,
+    "squares": 20779
+   },
+   "Northern Ireland": {
+    "pc": 28.662599060242655,
+    "km2": 4087,
+    "squares": 14259
+   }
+  },
+  "50": {
+   "uk_pc": 45.12357161838958,
+   "gb_pc": 45.623784384551264,
+   "uk_km2": 110370,
+   "England": {
+    "pc": 36.22613780751037,
+    "km2": 47328,
+    "squares": 130646
+   },
+   "Scotland": {
+    "pc": 59.176794109819916,
+    "km2": 46697,
+    "squares": 78911
+   },
+   "Wales": {
+    "pc": 53.24125318831513,
+    "km2": 11063,
+    "squares": 20779
+   },
+   "Northern Ireland": {
+    "pc": 37.04327091661407,
+    "km2": 5282,
+    "squares": 14259
+   }
+  }
+ },
+ "near": {
+  "median_km": 5.891215801239014,
+  "q25_km": 1.965747594833374,
+  "q75_km": 14.77028751373291,
+  "within_5km_pc": 12.019051902123918,
+  "beyond_20km_of_seaview_pc": 17.435474586555067,
+  "max_km": 49.98041534423828
+ },
+ "horizon": {
+  "mean_pc_all": 4.964139132488852,
+  "mean_pc_seaview": 18.89017239620877,
+  "median_pc_seaview": 14.166666666666666,
+  "over_half_pc": 1.1402522537255462,
+  "over_half_km2": 2789,
+  "glimpse_lt3_km2": 3227,
+  "under_10pc_of_seaview_pc": 41.2340339468239
+ },
+ "by_dist": [
+  {
+   "bin": "0 to 1",
+   "squares": 13837,
+   "pc": 97.5934089759341
+  },
+  {
+   "bin": "1 to 2",
+   "squares": 10760,
+   "pc": 86.93308550185873
+  },
+  {
+   "bin": "2 to 5",
+   "squares": 24035,
+   "pc": 68.40024963594757
+  },
+  {
+   "bin": "5 to 10",
+   "squares": 26391,
+   "pc": 43.416316168390736
+  },
+  {
+   "bin": "10 to 20",
+   "squares": 42009,
+   "pc": 21.99766716655955
+  },
+  {
+   "bin": "20 to 30",
+   "squares": 33651,
+   "pc": 10.044278030370569
+  },
+  {
+   "bin": "30 to 50",
+   "squares": 48463,
+   "pc": 1.857086849761674
+  },
+  {
+   "bin": "50 to 200",
+   "squares": 45449,
+   "pc": 0.0
+  }
+ ],
+ "counties": {
+  "n": 88,
+  "n_none": 18,
+  "none": [
+   "Bedfordshire",
+   "Berkshire",
+   "Buckinghamshire",
+   "Cambridgeshire",
+   "Derbyshire",
+   "Herefordshire",
+   "Hertfordshire",
+   "Leicestershire",
+   "Northamptonshire",
+   "Nottinghamshire",
+   "Oxfordshire",
+   "Rutland",
+   "South Yorkshire",
+   "Staffordshire",
+   "Warwickshire",
+   "West Midlands",
+   "West Yorkshire",
+   "Worcestershire"
+  ],
+  "top": [
+   {
+    "county": "Shetland Islands",
+    "nation": "Scotland",
+    "squares": 1491,
+    "pc": 90.74446680080483
+   },
+   {
+    "county": "Orkney Islands",
+    "nation": "Scotland",
+    "squares": 1035,
+    "pc": 89.56521739130434
+   },
+   {
+    "county": "North Ayrshire",
+    "nation": "Scotland",
+    "squares": 886,
+    "pc": 87.13318284424379
+   },
+   {
+    "county": "Na h-Eileanan Siar",
+    "nation": "Scotland",
+    "squares": 3086,
+    "pc": 82.92287751134154
+   },
+   {
+    "county": "Isle of Wight",
+    "nation": "England",
+    "squares": 385,
+    "pc": 78.44155844155844
+   },
+   {
+    "county": "City of Edinburgh",
+    "nation": "Scotland",
+    "squares": 261,
+    "pc": 78.16091954022988
+   },
+   {
+    "county": "Midlothian",
+    "nation": "Scotland",
+    "squares": 352,
+    "pc": 76.98863636363636
+   },
+   {
+    "county": "East Lothian",
+    "nation": "Scotland",
+    "squares": 678,
+    "pc": 74.92625368731564
+   }
+  ],
+  "bottom": [
+   {
+    "county": "Bedfordshire",
+    "nation": "England",
+    "squares": 1230,
+    "pc": 0.0
+   },
+   {
+    "county": "Cambridgeshire",
+    "nation": "England",
+    "squares": 3399,
+    "pc": 0.0
+   },
+   {
+    "county": "Buckinghamshire",
+    "nation": "England",
+    "squares": 1881,
+    "pc": 0.0
+   },
+   {
+    "county": "Berkshire",
+    "nation": "England",
+    "squares": 1254,
+    "pc": 0.0
+   },
+   {
+    "county": "Derbyshire",
+    "nation": "England",
+    "squares": 2628,
+    "pc": 0.0
+   },
+   {
+    "county": "Herefordshire",
+    "nation": "England",
+    "squares": 2176,
+    "pc": 0.0
+   },
+   {
+    "county": "Leicestershire",
+    "nation": "England",
+    "squares": 2170,
+    "pc": 0.0
+   },
+   {
+    "county": "Hertfordshire",
+    "nation": "England",
+    "squares": 1642,
+    "pc": 0.0
+   }
+  ],
+  "n_ge200": 79
+ },
+ "reach": {
+  "0 to 50": {
+   "km": 3.4816714605129087,
+   "lo": 3.1002965596030703,
+   "hi": 3.937349675698415,
+   "squares": 59203,
+   "pc": 32.9256963329561,
+   "boot_nan": 0
+  },
+  "50 to 150": {
+   "km": 6.5161523435515045,
+   "lo": 5.823063691309906,
+   "hi": 7.30550237561377,
+   "squares": 92151,
+   "pc": 23.28677930787512,
+   "boot_nan": 0
+  },
+  "150 to 300": {
+   "km": 9.009802962310227,
+   "lo": 8.122118683185123,
+   "hi": 10.229042340240552,
+   "squares": 53942,
+   "pc": 26.428386044269768,
+   "boot_nan": 0
+  },
+  "300+": {
+   "km": 8.631909920909983,
+   "lo": 7.0635585667249225,
+   "hi": 13.576930083453748,
+   "squares": 39299,
+   "pc": 23.076923076923077,
+   "boot_nan": 0
+  },
+  "all": {
+   "km": 6.047587810008066,
+   "lo": 5.422656388800581,
+   "hi": 6.609957952834703,
+   "squares": 244595,
+   "pc": 26.278950918865878,
+   "boot_nan": 0
+  }
+ },
+ "m1": {
+  "n": 244595,
+  "clusters": 176,
+  "ame_height_100m": {
+   "pp": 4.69813722319155,
+   "lo": 3.7654759724899525,
+   "hi": 5.707906176493142
+  },
+  "ame_relief_50m": {
+   "pp": 3.6508015358055026,
+   "lo": 2.654573553698322,
+   "hi": 4.485307290694724
+  },
+  "pseudo_r2": 0.5372618751676225,
+  "params": {
+   "Intercept": -6.104928682002251,
+   "C(nation)[T.Northern Ireland]": -0.19488185163896685,
+   "C(nation)[T.Scotland]": -0.3676618326787809,
+   "C(nation)[T.Wales]": -0.37709224408993774,
+   "cr(np.log(dcoast_km + 0.1), df=4, constraints='center')[0]": -3.9176307511365485,
+   "cr(np.log(dcoast_km + 0.1), df=4, constraints='center')[1]": -1.116533425124501,
+   "cr(np.log(dcoast_km + 0.1), df=4, constraints='center')[2]": -8.73513661239745,
+   "cr(np.log(dcoast_km + 0.1), df=4, constraints='center')[3]": -17.95358843704297,
+   "np.log1p(np.clip(ground_m, 0, None))": 0.6460800514470949,
+   "relief_m": 0.008413061079290275
+  },
+  "se": {
+   "Intercept": 0.4567934504136296,
+   "C(nation)[T.Northern Ireland]": 0.2087908411955158,
+   "C(nation)[T.Scotland]": 0.19976762778320706,
+   "C(nation)[T.Wales]": 0.22865178284904014,
+   "cr(np.log(dcoast_km + 0.1), df=4, constraints='center')[0]": 0.24676355076666767,
+   "cr(np.log(dcoast_km + 0.1), df=4, constraints='center')[1]": 0.30554480569363013,
+   "cr(np.log(dcoast_km + 0.1), df=4, constraints='center')[2]": 0.3348179817426781,
+   "cr(np.log(dcoast_km + 0.1), df=4, constraints='center')[3]": 3.4203820897221417,
+   "np.log1p(np.clip(ground_m, 0, None))": 0.06994427615363606,
+   "relief_m": 0.001194004432126125
+  },
+  "pred_2km": {
+   "pc": 86.65146576506609,
+   "lo": 84.13067084554764,
+   "hi": 88.67326250385581
+  },
+  "pred_5km": {
+   "pc": 57.305650453075444,
+   "lo": 53.49333793342845,
+   "hi": 60.85730516800981
+  },
+  "pred_10km": {
+   "pc": 32.77028638060416,
+   "lo": 29.090969605326443,
+   "hi": 36.1156242263439
+  },
+  "pred_20km": {
+   "pc": 13.419337357911814,
+   "lo": 11.043424685128295,
+   "hi": 15.85557203841336
+  },
+  "nation_Scotland": {
+   "b": -0.3676618326787809,
+   "lo": -0.7591991884108698,
+   "hi": 0.023875523053308034
+  },
+  "nation_Wales": {
+   "b": -0.37709224408993774,
+   "lo": -0.8252415034749296,
+   "hi": 0.07105701529505415
+  },
+  "nation_Northern Ireland": {
+   "b": -0.19488185163896685,
+   "lo": -0.6041043806839996,
+   "hi": 0.21434067740606597
+  }
+ },
+ "z10": {
+  "windows": [
+   {
+    "name": "Cumbria and Lancashire coast",
+    "squares": 5688,
+    "z9_pc": 40.57665260196906,
+    "z10_pc": 36.69127988748242,
+    "diff": -3.8853727144866355,
+    "agree_pc": 94.5675105485232,
+    "coverage": 1.0
+   },
+   {
+    "name": "Cornwall",
+    "squares": 3206,
+    "z9_pc": 52.46412975670618,
+    "z10_pc": 45.19650655021834,
+    "diff": -7.2676232064878405,
+    "agree_pc": 90.17467248908298,
+    "coverage": 0.889
+   },
+   {
+    "name": "Lothian and Fife",
+    "squares": 5506,
+    "z9_pc": 51.8343625136215,
+    "z10_pc": 47.4573192880494,
+    "diff": -4.377043225572102,
+    "agree_pc": 93.95205230657464,
+    "coverage": 1.0
+   },
+   {
+    "name": "Norfolk",
+    "squares": 6209,
+    "z9_pc": 12.530198099532935,
+    "z10_pc": 9.85665968755033,
+    "diff": -2.673538411982605,
+    "agree_pc": 97.10098244483814,
+    "coverage": 0.8
+   }
+  ],
+  "squares": 20609,
+  "z9_pc": 36.983842010771994,
+  "z10_pc": 32.80605560677374,
+  "diff": -4.177786403998255,
+  "agree_pc": 94.48299286719394,
+  "max_abs_diff": 7.2676232064878405,
+  "sensitive": true,
+  "rel": 0.887037522959853,
+  "adj_uk_pc": 23.310415529054342,
+  "rel_drop_pc": 11.296247704014695
+ },
+ "mc": {
+  "n": 2000,
+  "base_pc": 25.0,
+  "sd5": {
+   "mean_pc": 25.237499999999997,
+   "lo": 24.65,
+   "hi": 25.805,
+   "expected_pc": 25.2375,
+   "uncertain_pc": 12.7,
+   "flip_vs_main_pc": 1.7999999999999998
+  },
+  "sd10": {
+   "mean_pc": 24.717499999999998,
+   "lo": 23.9925,
+   "hi": 25.2525,
+   "expected_pc": 24.7175,
+   "uncertain_pc": 18.6,
+   "flip_vs_main_pc": 2.75
+  }
+ },
+ "sens": [
+  {
+   "key": "d25",
+   "label": "Maximum distance 25 km",
+   "pc": 23.172591426644043,
+   "diff": -3.1063594922218343,
+   "agree_pc": 96.89364050777817
+  },
+  {
+   "key": "d100",
+   "label": "Maximum distance 100 km",
+   "pc": 26.97847462131278,
+   "diff": 0.6995237024469034,
+   "agree_pc": 99.3004762975531
+  },
+  {
+   "key": "k0",
+   "label": "No refraction (k = 0)",
+   "pc": 25.58474212473681,
+   "diff": -0.694208794129068,
+   "agree_pc": 99.30579120587093
+  },
+  {
+   "key": "k25",
+   "label": "Strong refraction (k = 0.25)",
+   "pc": 26.952308918824997,
+   "diff": 0.6733579999591193,
+   "agree_pc": 99.32664200004089
+  },
+  {
+   "key": "opensea",
+   "label": "Open sea only (channels under about 1 km removed)",
+   "pc": 25.43183630082381,
+   "diff": -0.8471146180420668,
+   "agree_pc": 99.15288538195793
+  },
+  {
+   "key": "glimpse3",
+   "label": "Sea on at least 3 of 360 rays",
+   "pc": 24.95962713873955,
+   "diff": -1.3193237801263287,
+   "agree_pc": 98.68067621987366
+  },
+  {
+   "key": "az720",
+   "label": "720 rays (5% sample)",
+   "pc": 26.527107694823783,
+   "diff": 0.19625480415406216,
+   "agree_pc": 99.80374519584593,
+   "base_pc": 26.33085289066972,
+   "n": 12229
+  },
+  {
+   "key": "q500",
+   "label": "500 m grid (four points per square, 25% sample)",
+   "pc": 25.7863786403366,
+   "diff": -0.6069621067033673,
+   "base_pc": 26.393340747039968,
+   "n": 61148,
+   "agree_pc": null,
+   "any_pc": 32.30032053378688,
+   "all_pc": 20.214888467325178,
+   "mixed_pc": 12.085432066461701
+  },
+  {
+   "key": "z10",
+   "label": "Terrain at about 88 m (zoom 10), four windows",
+   "pc": 32.80605560677374,
+   "diff": -4.177786403998255,
+   "agree_pc": 94.48299286719394,
+   "base_pc": 36.983842010771994,
+   "n": 20609
+  },
+  {
+   "key": "mc_sd5",
+   "label": "Terrain error, sd 5 m (2,000 squares, 20 draws)",
+   "pc": 25.237499999999997,
+   "diff": 0.23749999999999716,
+   "agree_pc": null,
+   "base_pc": 25.0,
+   "n": 2000
+  },
+  {
+   "key": "mc_sd10",
+   "label": "Terrain error, sd 10 m (2,000 squares, 20 draws)",
+   "pc": 24.717499999999998,
+   "diff": -0.2825000000000024,
+   "agree_pc": null,
+   "base_pc": 25.0,
+   "n": 2000
+  }
+ ],
+ "sens_range": {
+  "lo_pc": 22.101164514867623,
+  "hi_pc": 26.97847462131278,
+  "min_diff": -4.177786403998255,
+  "max_diff": 0.6995237024469034
+ },
+ "farthest_seaview": [
+  {
+   "lon": -1.3873218736250432,
+   "lat": 52.699592345308325,
+   "E": 441500,
+   "N": 311500,
+   "grid": "OSGB",
+   "km": 94.36630754670864,
+   "county": "Leicestershire",
+   "nation": "England",
+   "ground_m": 143.6318817138672,
+   "dcoast_km": 94.01530456542969,
+   "near": {
+    "name": "Donington le Heath",
+    "county": "Leicestershire",
+    "km": 1.1553644822984246
+   }
+  },
+  {
+   "lon": -0.7075656355775215,
+   "lat": 52.16368539229366,
+   "E": 488500,
+   "N": 252500,
+   "grid": "OSGB",
+   "km": 92.45539465060976,
+   "county": "Buckinghamshire",
+   "nation": "England",
+   "ground_m": 71.90398406982422,
+   "dcoast_km": 92.61176300048828,
+   "near": {
+    "name": "Olney",
+    "county": "Buckinghamshire",
+    "km": 1.295408889923883
+   }
+  },
+  {
+   "lon": -1.355741620341553,
+   "lat": 52.83427008185657,
+   "E": 443500,
+   "N": 326500,
+   "grid": "OSGB",
+   "km": 90.27181176868004,
+   "county": "Leicestershire",
+   "nation": "England",
+   "ground_m": 88.95927429199219,
+   "dcoast_km": 89.52986907958984,
+   "near": {
+    "name": "Castle Donington",
+    "county": "Leicestershire",
+    "km": 1.65597924255033
+   }
+  },
+  {
+   "lon": -1.2413788441769558,
+   "lat": 52.58187970428964,
+   "E": 451500,
+   "N": 298500,
+   "grid": "OSGB",
+   "km": 89.15716460273958,
+   "county": "Leicestershire",
+   "nation": "England",
+   "ground_m": 85.05551147460938,
+   "dcoast_km": 88.45387268066406,
+   "near": {
+    "name": "Huncote",
+    "county": "Leicestershire",
+    "km": 1.1220479027615267
+   }
+  },
+  {
+   "lon": -0.8509498361555546,
+   "lat": 52.273058667777725,
+   "E": 478500,
+   "N": 264500,
+   "grid": "OSGB",
+   "km": 88.23831367382311,
+   "county": "Northamptonshire",
+   "nation": "England",
+   "ground_m": 108.86933898925781,
+   "dcoast_km": 87.96092224121094,
+   "near": {
+    "name": "Boothville",
+    "county": "Northamptonshire",
+    "km": 0.7133214997319277
+   }
+  }
+ ],
+ "farthest_coast": {
+  "lon": -0.9591944786407345,
+  "lat": 52.031309938627714,
+  "E": 471500,
+  "N": 237500,
+  "km": 114.43255615234375,
+  "county": "Buckinghamshire",
+  "near": {
+   "name": "Akeley",
+   "county": "Buckinghamshire",
+   "km": 0.7627118303902921
+  }
+ },
+ "seaview_far_inland": {
+  "top": [
+   {
+    "lon": -1.9166617971727502,
+    "lat": 54.46284896793418,
+    "km_coast": 49.670230865478516,
+    "near_km": 49.838375091552734,
+    "ground_m": 426.037841796875,
+    "county": "Durham",
+    "near": {
+     "name": "Hope",
+     "county": "Durham",
+     "km": 2.899765814197343
+    }
+   },
+   {
+    "lon": -1.916643590353647,
+    "lat": 54.47183590745811,
+    "km_coast": 49.287261962890625,
+    "near_km": 49.65488815307617,
+    "ground_m": 337.0509338378906,
+    "county": "Durham",
+    "near": {
+     "name": "Scargill",
+     "county": "Durham",
+     "km": 2.1949606954394443
+    }
+   },
+   {
+    "lon": -1.9012565757888524,
+    "lat": 54.453850430728245,
+    "km_coast": 49.251033782958984,
+    "near_km": 49.751983642578125,
+    "ground_m": 411.25836181640625,
+    "county": "North Yorkshire",
+    "near": {
+     "name": "Washfold",
+     "county": "North Yorkshire",
+     "km": 3.4529171400793808
+    }
+   }
+  ],
+  "n_300_40km": 80,
+  "n_40km": 123
+ },
+ "no_seaview_by_coast": {
+  "within_1km_pc": 2.4065910240659103,
+  "within_2km_pc": 7.069967882262064,
+  "within_5km_pc": 19.19312386905741
+ },
+ "pop": {
+  "1.7": {
+   "gb_pc": 22.580904449112214,
+   "gb_people_m": 13.85819799931367,
+   "gb_total_m": 61.371315,
+   "fallback_seats": 7,
+   "aggregates_dropped": 93,
+   "ni_pc": 56.03560422200995,
+   "ni_settlements": 275,
+   "gb_wikidata_pc": 21.95526233770961,
+   "settlements_pc": 26.651586176823283,
+   "settlements_withpop_pc": 18.63151013292656
+  },
+  "5": {
+   "gb_pc": 25.230726452181724,
+   "gb_people_m": 15.484428607756769,
+   "gb_total_m": 61.371315,
+   "fallback_seats": 7,
+   "aggregates_dropped": 93,
+   "ni_pc": 56.56332171054186,
+   "ni_settlements": 275,
+   "gb_wikidata_pc": 24.203673160178084,
+   "settlements_pc": 29.63588793197427,
+   "settlements_withpop_pc": 21.34088762983947
+  },
+  "15": {
+   "gb_pc": 29.93199475774809,
+   "gb_people_m": 18.36965878856107,
+   "gb_total_m": 61.371315,
+   "fallback_seats": 7,
+   "aggregates_dropped": 93,
+   "ni_pc": 66.00883692199679,
+   "ni_settlements": 275,
+   "gb_wikidata_pc": 28.566149870213188,
+   "settlements_pc": 34.988553363130926,
+   "settlements_withpop_pc": 26.178542892423913
+  },
+  "50": {
+   "gb_pc": 37.72764377660845,
+   "gb_people_m": 23.153951104220273,
+   "gb_total_m": 61.371315,
+   "fallback_seats": 7,
+   "aggregates_dropped": 93,
+   "ni_pc": 68.43254336606392,
+   "ni_settlements": 275,
+   "gb_wikidata_pc": 36.43641310653439,
+   "settlements_pc": 45.263272647988664,
+   "settlements_withpop_pc": 36.52938185516089
+  }
+ },
+ "towns": {
+  "n_20k": 634,
+  "sea_pc": 21.92429022082019,
+  "coast_nosea": [
+   {
+    "name": "Warrington",
+    "county": "Cheshire",
+    "pop": 165456,
+    "dcoast_km": 1.7297101020812988,
+    "sea5": false,
+    "sea15": false
+   },
+   {
+    "name": "Colchester",
+    "county": "Essex",
+    "pop": 121859,
+    "dcoast_km": 2.3642618656158447,
+    "sea5": false,
+    "sea15": true
+   },
+   {
+    "name": "Chatham",
+    "county": "Kent",
+    "pop": 76792,
+    "dcoast_km": 0.763342022895813,
+    "sea5": false,
+    "sea15": true
+   },
+   {
+    "name": "Boston",
+    "county": "Lincolnshire",
+    "pop": 64600,
+    "dcoast_km": 1.7369886636734009,
+    "sea5": false,
+    "sea15": true
+   },
+   {
+    "name": "Neath",
+    "county": "West Glamorgan",
+    "pop": 50658,
+    "dcoast_km": 2.800259828567505,
+    "sea5": false,
+    "sea15": false
+   },
+   {
+    "name": "Perth",
+    "county": "Perth and Kinross",
+    "pop": 47430,
+    "dcoast_km": 2.3931472301483154,
+    "sea5": false,
+    "sea15": false
+   },
+   {
+    "name": "Canvey Island",
+    "county": "Essex",
+    "pop": 37000,
+    "dcoast_km": 1.3452184200286865,
+    "sea5": true,
+    "sea15": true
+   },
+   {
+    "name": "Morecambe",
+    "county": "Lancashire",
+    "pop": 34768,
+    "dcoast_km": 1.4354668855667114,
+    "sea5": true,
+    "sea15": true
+   },
+   {
+    "name": "Thornton-Cleveleys",
+    "county": "Lancashire",
+    "pop": 31157,
+    "dcoast_km": 1.4420485496520996,
+    "sea5": true,
+    "sea15": true
+   },
+   {
+    "name": "Plympton",
+    "county": "Devon",
+    "pop": 29899,
+    "dcoast_km": 2.756751298904419,
+    "sea5": false,
+    "sea15": false
+   },
+   {
+    "name": "Great Sankey",
+    "county": "Cheshire",
+    "pop": 24211,
+    "dcoast_km": 1.6409469842910767,
+    "sea5": true,
+    "sea15": true
+   },
+   {
+    "name": "Newton Abbot",
+    "county": "Devon",
+    "pop": 23580,
+    "dcoast_km": 0.868993878364563,
+    "sea5": false,
+    "sea15": true
+   }
+  ],
+  "inland_sea": [
+   {
+    "name": "Horwich",
+    "county": "Greater Manchester",
+    "pop": 20690,
+    "dcoast_km": 24.212373733520508,
+    "near_km": 29.98395347595215
+   },
+   {
+    "name": "Stanley",
+    "county": "Durham",
+    "pop": 33320,
+    "dcoast_km": 19.801633834838867,
+    "near_km": 24.790103912353516
+   },
+   {
+    "name": "Chorley",
+    "county": "Lancashire",
+    "pop": 38420,
+    "dcoast_km": 19.654767990112305,
+    "near_km": 21.181896209716797
+   },
+   {
+    "name": "Skelmersdale",
+    "county": "Lancashire",
+    "pop": 38813,
+    "dcoast_km": 19.236743927001953,
+    "near_km": 22.9331111907959
+   },
+   {
+    "name": "Leyland",
+    "county": "Lancashire",
+    "pop": 38578,
+    "dcoast_km": 13.415522575378418,
+    "near_km": 18.728801727294922
+   },
+   {
+    "name": "Ormskirk",
+    "county": "Lancashire",
+    "pop": 24073,
+    "dcoast_km": 12.485703468322754,
+    "near_km": 15.506624221801758
+   },
+   {
+    "name": "Cambuslang",
+    "county": "South Lanarkshire",
+    "pop": 29100,
+    "dcoast_km": 12.202339172363281,
+    "near_km": 20.16286849975586
+   },
+   {
+    "name": "Newton Mearns",
+    "county": "East Renfrewshire",
+    "pop": 26600,
+    "dcoast_km": 10.836304664611816,
+    "near_km": 11.42163372039795
+   },
+   {
+    "name": "Billericay",
+    "county": "Essex",
+    "pop": 27608,
+    "dcoast_km": 10.819422721862793,
+    "near_km": 18.40919303894043
+   },
+   {
+    "name": "Gravesend",
+    "county": "Kent",
+    "pop": 74000,
+    "dcoast_km": 10.660969734191895,
+    "near_km": 11.0469970703125
+   },
+   {
+    "name": "Portishead",
+    "county": "Somerset",
+    "pop": 23699,
+    "dcoast_km": 10.40418529510498,
+    "near_km": 12.219064712524414
+   },
+   {
+    "name": "Washington",
+    "county": "Tyne and Wear",
+    "pop": 67158,
+    "dcoast_km": 9.958447456359863,
+    "near_km": 21.788976669311523
+   }
+  ]
+ },
+ "validation": {
+  "n": 10,
+  "terrain_50": 8,
+  "published_50": 9,
+  "terrain_100": 8,
+  "published_100": 9,
+  "rule_met": true,
+  "misses_terrain": [
+   "Pendle Hill",
+   "Worcestershire Beacon"
+  ],
+  "misses_published": [
+   "Worcestershire Beacon"
+  ],
+  "points": [
+   {
+    "name": "Black Combe",
+    "published_m": 600,
+    "terrain_m": 557.3,
+    "terrain_50_sea": 1,
+    "terrain_50_near_km": 7.5,
+    "published_50_sea": 1,
+    "published_50_near_km": 3.6
+   },
+   {
+    "name": "Dunkery Beacon",
+    "published_m": 519,
+    "terrain_m": 477.5,
+    "terrain_50_sea": 1,
+    "terrain_50_near_km": 15.9,
+    "published_50_sea": 1,
+    "published_50_near_km": 6.8
+   },
+   {
+    "name": "Pendle Hill",
+    "published_m": 557,
+    "terrain_m": 517.5,
+    "terrain_50_sea": 0,
+    "terrain_50_near_km": null,
+    "published_50_sea": 1,
+    "published_50_near_km": 40.0
+   },
+   {
+    "name": "Leith Hill (tower top)",
+    "published_m": 294,
+    "terrain_m": 253.4,
+    "terrain_50_sea": 1,
+    "terrain_50_near_km": 39.4,
+    "published_50_sea": 1,
+    "published_50_near_km": 39.4
+   },
+   {
+    "name": "Ditchling Beacon",
+    "published_m": 248,
+    "terrain_m": 196.4,
+    "terrain_50_sea": 1,
+    "terrain_50_near_km": 21.5,
+    "published_50_sea": 1,
+    "published_50_near_km": 10.5
+   },
+   {
+    "name": "Brown Willy",
+    "published_m": 420,
+    "terrain_m": 352.8,
+    "terrain_50_sea": 1,
+    "terrain_50_near_km": 19.0,
+    "published_50_sea": 1,
+    "published_50_near_km": 18.9
+   },
+   {
+    "name": "Worcestershire Beacon",
+    "published_m": 425,
+    "terrain_m": 335.0,
+    "terrain_50_sea": 0,
+    "terrain_50_near_km": null,
+    "published_50_sea": 0,
+    "published_50_near_km": null
+   },
+   {
+    "name": "Snowdon (Yr Wyddfa)",
+    "published_m": 1085,
+    "terrain_m": 902.2,
+    "terrain_50_sea": 1,
+    "terrain_50_near_km": 16.2,
+    "published_50_sea": 1,
+    "published_50_near_km": 15.8
+   },
+   {
+    "name": "Scafell Pike",
+    "published_m": 978,
+    "terrain_m": 862.7,
+    "terrain_50_sea": 1,
+    "terrain_50_near_km": 18.9,
+    "published_50_sea": 1,
+    "published_50_near_km": 15.0
+   },
+   {
+    "name": "Slieve Donard",
+    "published_m": 850,
+    "terrain_m": 743.2,
+    "terrain_50_sea": 1,
+    "terrain_50_near_km": 6.4,
+    "published_50_sea": 1,
+    "published_50_near_km": 3.0
+   }
+  ]
+ },
+ "os_compare": {
+  "E": 425500,
+  "N": 314500,
+  "published_km": 113.0,
+  "dcoast_km": 99.062,
+  "km_to_seaview": 78.892,
+  "farthest_coast_to_os_km": 89.69392398596462
+ }
+}
