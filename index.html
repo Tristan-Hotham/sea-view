@@ -1,0 +1,378 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Can you see the sea? | Sea views from every 1 km square of the UK</title>
+<meta name="description" content="From how much of the United Kingdom can you see the sea? Sight lines from every 1 km square over the terrain, at four eye heights. Search your town.">
+<meta property="og:title" content="Can you see the sea?">
+<meta property="og:description" content="Standing on the bare ground, 26% of the UK's land has the sea in view. Find your square, and how far you need to climb.">
+<meta property="og:image" content="https://maps.tristanhotham.com/sea-view/header.png">
+<meta property="og:url" content="https://maps.tristanhotham.com/sea-view/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800;9..144,900&family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=MedievalSharp&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/maplibre-gl@4.7.1/dist/maplibre-gl.css">
+<style>
+/* House palette: paper, ink, vermilion and sea blue. */
+:root{
+  --bg:#F6EED8; --panel:#EFE3C4; --fg:#2B2119; --muted:#6E604E; --rule:#E2D3AE; --card:#FBF5E4; --border:#D3C29A;
+  --hot:#A3261B; --cool:#3D6E9E; --gold:#B8862B;
+  --display:"Fraunces",Georgia,"Times New Roman",serif;
+  --body:"Source Serif 4",Georgia,"Times New Roman",serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+  --hand:"MedievalSharp","Fraunces",Georgia,serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#1A1612; --panel:#241E18; --fg:#EFE6D4; --muted:#ADA08B; --rule:#3A3128; --card:#211B15; --border:#4D4234;
+  --hot:#E07A6C; --cool:#8FB4DA; --gold:#E2B860; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#1A1612; --panel:#241E18; --fg:#EFE6D4; --muted:#ADA08B; --rule:#3A3128; --card:#211B15; --border:#4D4234;
+  --hot:#E07A6C; --cool:#8FB4DA; --gold:#E2B860; color-scheme:dark}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font:400 18px/1.62 var(--body);
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));overflow-x:hidden}
+.wrap{max-width:720px;margin:0 auto;padding-block:28px 64px}
+a{color:inherit;text-decoration-color:var(--hot);text-underline-offset:3px}
+.kicker{font:500 12px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.kicker b{background:var(--hot);color:#fff;padding:5px 8px;font-weight:500}
+h2{font:800 34px/1.04 var(--display);letter-spacing:-.01em;margin:54px 0 10px;text-wrap:balance}
+h2 .n{font:500 13px/1 var(--mono);color:var(--hot);display:block;letter-spacing:.1em;margin-bottom:10px}
+p{margin:0 0 16px}
+.lede::first-letter{font:400 76px/.8 var(--hand);float:left;margin:6px 10px 0 0;color:var(--hot)}
+.byline{font:400 13px/1.4 var(--mono);color:var(--muted);margin-top:14px}
+.src{font:400 12px/1.45 var(--mono);color:var(--muted);margin-top:10px}
+ul.plain{padding-left:20px} ul.plain li{margin:4px 0}
+details{border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:10px 0;margin:18px 0;font-size:16px}
+summary{font:500 13px/1.4 var(--mono);letter-spacing:.06em;text-transform:uppercase;cursor:pointer;color:var(--muted)}
+.cta{display:flex;flex-wrap:wrap;gap:10px;margin:30px 0 0}
+.cta a{font:500 13px/1 var(--mono);text-decoration:none;border:1px solid var(--fg);padding:11px 14px;border-radius:3px}
+.cta a.p{background:var(--hot);border-color:var(--hot);color:#fff}
+footer{border-top:6px double var(--fg);margin-top:56px;padding-top:16px;font:400 13px/1.55 var(--mono);color:var(--muted)}
+footer p{margin:0 0 10px}
+.theme{font:500 12px/1 var(--mono);background:var(--card);color:var(--fg);border:1px solid var(--border);border-radius:3px;padding:4px 8px;cursor:pointer;min-height:28px}
+.figure{margin:22px 0}
+.figure img{width:100%;display:block;border:1px solid var(--border);background:#F3E5BF}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin:22px 0}
+.stat b{display:block;font:900 40px/1 var(--display);color:var(--hot)}
+.stat span{font:400 13px/1.35 var(--mono);color:var(--muted)}
+table.t{width:100%;border-collapse:collapse;font:400 13.5px/1.4 var(--mono);margin:12px 0 4px}
+table.t th{text-align:left;font-weight:500;border-bottom:2px solid var(--fg);padding:5px 6px 5px 0}
+table.t td{border-bottom:1px solid var(--rule);padding:5px 6px 5px 0;vertical-align:top}
+table.t td.r,table.t th.r{text-align:right}
+.tscroll{overflow-x:auto}
+
+/* ---- the map ---- */
+.topbar{height:40px;display:flex;align-items:center;gap:14px;margin:0 calc(-1 * max(16px,env(safe-area-inset-left,0px)));padding:0 max(14px,env(safe-area-inset-left,0px));border-bottom:3px double var(--fg);background:var(--bg);overflow:hidden;white-space:nowrap}
+.tb-name{font:400 19px/1 var(--hand);color:var(--hot);text-decoration:none;letter-spacing:.03em}
+.tb-k{font:500 11px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.tb-links{margin-left:auto;display:flex;gap:16px;align-items:center;font:500 12px/1 var(--mono)}
+.tb-links a{text-decoration:none}.tb-links a:hover{text-decoration:underline}
+.mapband{width:100vw;margin-left:calc(50% - 50vw)}
+.pane{position:relative;height:calc(100vh - 43px);height:calc(100svh - 43px);min-height:460px;border-bottom:1px solid #BCA676;background:#F3E5BF;overflow:hidden;flex:1 1 50%;min-width:0}
+.pane::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:2;box-shadow:inset 0 0 90px rgba(120,84,30,.22), inset 0 0 18px rgba(120,84,30,.18)}
+.cartouche{position:absolute;left:14px;top:14px;z-index:5;max-width:min(330px,calc(100% - 28px));background:rgba(251,243,220,.95);color:#2B2119;border:2px solid #2B2119;outline:1px solid #2B2119;outline-offset:-6px;padding:10px 14px 10px;box-shadow:0 3px 14px rgba(60,40,10,.22)}
+.cartouche::before,.cartouche::after{content:"";position:absolute;width:9px;height:9px;background:#A3261B;border:1px solid #2B2119;border-radius:50%}
+.cartouche::before{left:-6px;top:-6px}.cartouche::after{right:-6px;bottom:-6px}
+.cartouche h1{font:900 clamp(22px,2.3vw,30px)/1 var(--display);letter-spacing:-.015em;margin:6px 0 0;color:#2B2119}
+.cartouche h1 .a{color:#A3261B;font-family:var(--hand);font-weight:400;letter-spacing:.03em}
+.cartouche .dek{font-size:13.5px;line-height:1.36;margin:6px 0 0}
+.cartouche .byline{font-size:11px;color:#6E604E;margin-top:6px}
+.cartouche .kicker{color:#6E604E}
+.ct-fold{position:absolute;right:6px;top:5px;width:26px;height:26px;border:0;background:none;color:#A3261B;font:400 18px/1 var(--hand);cursor:pointer;padding:0}
+.ct-toggle{display:none;font:400 17px/1 var(--hand);color:#A3261B;background:none;border:0;padding:2px 0;cursor:pointer;letter-spacing:.03em;min-height:30px}
+.cartouche.folded .ct-body,.cartouche.folded .ct-fold{display:none}.cartouche.folded .ct-toggle{display:block}.cartouche.folded{padding:4px 11px}
+.ov{position:absolute;z-index:5;font:400 13px/1.3 var(--mono);color:#2B2119}
+.ov-top{right:54px;top:10px;max-width:calc(100% - 480px);display:flex;flex-direction:column;gap:6px;align-items:flex-end;pointer-events:none}
+.ov-top>*{pointer-events:auto}
+.srch{position:relative;width:min(340px,100%)}
+.srch input{width:100%;font:400 15px/1 var(--mono);background:rgba(251,245,228,.96);color:#2B2119;border:1px solid #9C8656;border-radius:3px;padding:9px 10px;min-height:40px;box-shadow:0 1px 4px rgba(60,40,10,.18)}
+.srch input:focus-visible,.chip:focus-visible,.lp label:focus-within,.tl button:focus-visible{outline:2px solid #A3261B;outline-offset:2px}
+.sug{position:absolute;left:0;right:0;top:100%;margin:2px 0 0;padding:0;list-style:none;background:#FBF5E4;border:1px solid #9C8656;max-height:300px;overflow:auto;display:none;box-shadow:0 3px 10px rgba(60,40,10,.2);z-index:12}
+.sug li{padding:8px 10px;cursor:pointer;border-bottom:1px solid #E7D9B6}
+.sug li span{color:#7A6A52;font-size:12px}
+.sug li[aria-selected="true"],.sug li:hover{background:#EFE1BC}
+.chips{display:flex;gap:6px;overflow-x:auto;max-width:100%;scrollbar-width:none;padding-bottom:2px}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:0 0 auto;font:500 12px/1 var(--mono);background:rgba(251,245,228,.94);color:#2B2119;border:1px solid #9C8656;border-radius:999px;padding:8px 11px;cursor:pointer;min-height:34px;white-space:nowrap;box-shadow:0 1px 3px rgba(60,40,10,.14)}
+.chip:hover{background:#EFE1BC}
+.chip.lyr{background:#2B2119;color:#F6EED8;border-color:#2B2119}
+.lp{position:absolute;right:54px;top:104px;z-index:9;background:rgba(251,245,228,.98);border:1px solid #9C8656;border-radius:4px;padding:10px 12px 8px;font:400 13px/1.3 var(--mono);color:#2B2119;box-shadow:0 3px 12px rgba(60,40,10,.25);display:none;min-width:240px;max-height:calc(100% - 200px);overflow:auto}
+.lp.open{display:block}
+.lp h4{margin:0 0 6px;font:500 11px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:#7A6A52}
+.lp h5{margin:9px 0 1px;padding-top:7px;border-top:1px solid #E2D3AE;font:600 10.5px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:#A3261B}
+.lp h4+h5{border-top:0;padding-top:0;margin-top:4px}
+.lp label{display:flex;gap:8px;align-items:center;padding:5px 0;cursor:pointer;min-height:30px}
+.lp input{accent-color:#A3261B;width:16px;height:16px;flex:none}
+.lp canvas{width:22px;height:22px;flex:none}
+.ov-bl{position:absolute;left:12px;bottom:12px;z-index:4;display:flex;align-items:flex-end;gap:6px;pointer-events:none}
+.rose svg{display:block}
+.maplibregl-popup-content{background:#FBF5E4;color:#2B2119;font:400 13px/1.45 var(--mono);border:1px solid #9C8656;border-radius:4px;padding:10px 12px;box-shadow:0 3px 12px rgba(60,40,10,.25);max-width:310px;max-height:60vh;overflow:auto}
+.maplibregl-popup-content b.t{display:block;font:400 20px/1.15 var(--hand);color:#A3261B;margin-bottom:3px;letter-spacing:.02em;padding-right:14px}
+.maplibregl-popup-content table{border-collapse:collapse;margin:5px 0}
+.maplibregl-popup-content td{padding:1px 8px 1px 0;vertical-align:top}
+.maplibregl-popup-content td:first-child{color:#7A6A52}
+.maplibregl-popup-content .nt{color:#7A6A52;font-size:11.5px;margin:5px 0 0}
+.maplibregl-popup-content .lk{margin-top:6px;padding-top:6px;border-top:1px dashed #C9B583;display:flex;flex-wrap:wrap;gap:4px 12px}
+.maplibregl-popup-content a{color:#A3261B}
+.maplibregl-popup-tip{border-top-color:#9C8656!important;border-bottom-color:#9C8656!important}
+.maplibregl-ctrl-attrib{font:400 11px/1.3 var(--mono)!important;background:rgba(251,245,228,.85)!important}
+.maplibregl-ctrl-group{background:#FBF5E4!important;border:1px solid #9C8656}
+.maplibregl-popup{z-index:7}
+.nojs{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font:400 14px var(--mono);color:#6E604E;padding:20px;text-align:center}
+.keyrow{display:flex;flex-wrap:wrap;gap:6px 18px;font:400 13px/1.3 var(--mono);color:var(--muted);margin:12px 0}
+.keyrow span{display:flex;align-items:center;gap:6px}.keyrow canvas{width:24px;height:24px}
+@media (max-width:1000px){
+  .ov-top{left:10px;right:54px;max-width:none;align-items:flex-start}
+  .lp{left:10px;right:auto}
+  .cartouche{top:104px}
+}
+@media (max-width:600px){
+  
+  .tb-k,.tb-links a.x{display:none}
+  .topbar{gap:10px}.tb-name{font-size:16px}.tb-links{gap:10px}
+  .lp{top:100px;left:8px;right:8px;min-width:0;max-height:calc(100% - 230px)}
+  .ov-top{left:8px;top:8px}
+  .cartouche{left:8px;top:100px;max-width:calc(100% - 16px);padding:10px 12px}
+  .cartouche h1{font-size:24px}
+  .ct-toggle{display:block}.ct-fold{display:none}
+  .ov-bl{display:none}
+  .maplibregl-ctrl-bottom-right{bottom:84px}
+}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+#map{position:absolute;inset:0}
+.chip[aria-pressed="true"]{background:#A3261B;color:#fff;border-color:#2B2119}
+.lp{top:60px}
+.keys{position:absolute;left:12px;bottom:12px;z-index:4;background:rgba(251,243,220,.95);border:1px solid #9C8656;border-radius:3px;padding:8px 10px;font:400 11.5px/1.25 var(--mono);color:#2B2119;max-width:250px;box-shadow:0 2px 8px rgba(60,40,10,.18)}
+.key b{display:block;font:400 15px/1.1 var(--hand);color:#A3261B;margin-bottom:5px;font-weight:400}
+.key .row{display:flex;align-items:center;gap:6px;margin:2px 0}
+.key i{display:inline-block;width:18px;height:11px;border:1px solid rgba(43,33,25,.5);flex:none}
+.key .dot{width:11px;height:11px;border-radius:50%;background:#1F1838;border:1.5px solid #2B2119}
+.hz{position:absolute;right:54px;bottom:34px;z-index:8;width:min(600px,calc(100% - 340px));background:rgba(251,245,228,.98);border:2px solid #2B2119;outline:1px solid #2B2119;outline-offset:-6px;padding:10px 14px 8px;color:#2B2119;box-shadow:0 3px 14px rgba(60,40,10,.25);font:400 13px/1.4 var(--mono)}
+.hz[hidden]{display:none}
+.hz h3{margin:0 26px 2px 0;font:400 22px/1.1 var(--hand);color:#A3261B}
+.hz .x{position:absolute;right:8px;top:6px;border:0;background:none;font:400 20px/1 var(--mono);color:#6E604E;cursor:pointer;min-width:30px;min-height:30px}
+.hz p{margin:0 0 4px}
+.hz svg{width:100%;height:auto;display:block}
+.hz svg .ax{font:400 10px var(--mono);fill:#6E604E}
+.hz svg .lg{font:400 10px var(--mono)}
+.hz .nt{color:#6E604E;font-size:11.5px}
+.hz a{color:#A3261B}
+@media (max-width:800px){
+  .pane{height:78svh;min-height:520px}
+  .hz{left:6px;right:6px;bottom:6px;width:auto;padding:8px 10px 6px;max-height:58%;overflow:auto}
+  .hz h3{font-size:19px}
+  .keys{display:none}
+  .chip .lg{display:none}
+  .chip{padding:8px 8px;font-size:11.5px}
+  .chips{gap:4px}
+  .ov-top{left:8px;right:54px;max-width:none;align-items:flex-start}
+  .lp{top:100px;left:8px;right:8px;min-width:0;max-height:calc(100% - 140px)}
+  .cartouche{top:100px}
+}
+.places{columns:2 260px;column-gap:28px;font:400 14px/1.45 var(--mono);padding-left:18px;margin:10px 0 18px}
+.places li{break-inside:avoid;margin:0 0 6px}
+.places a{cursor:pointer}
+
+.tl{position:absolute;left:50%;transform:translateX(-50%);bottom:14px;z-index:6;width:min(620px,calc(100% - 130px));background:rgba(251,245,228,.96);border:1px solid #9C8656;border-radius:4px;padding:7px 12px 6px;font:400 12.5px/1.3 var(--mono);color:#2B2119;box-shadow:0 2px 10px rgba(60,40,10,.2);display:flex;align-items:center;gap:10px}
+.tl input[type=range]{flex:1;accent-color:#A3261B;min-width:0;height:28px}
+.tl button{font:500 12px/1 var(--mono);background:#2B2119;color:#F6EED8;border:0;border-radius:3px;padding:7px 9px;cursor:pointer;min-height:30px;min-width:34px}
+.tl .yr{font:400 21px/1 var(--hand);color:#A3261B;min-width:118px;text-align:center}
+.tl .sm{font-size:11px;color:#6E604E;white-space:nowrap}
+.key .ends{display:flex;justify-content:space-between;font-size:10.5px;color:#6E604E}
+.key .sw{display:inline-block;width:14px;height:11px;border:1px solid rgba(43,33,25,.5);vertical-align:-1px;margin-right:5px}
+.keys{bottom:84px}
+@media (max-width:800px){.tl{width:calc(100% - 16px);bottom:8px;padding:6px 8px;gap:6px}.tl .yr{font-size:17px;min-width:86px}.tl .sm{display:none}.maplibregl-ctrl-bottom-right{bottom:70px}}
+.wheel{position:absolute;left:12px;bottom:84px;z-index:4;background:rgba(251,243,220,.95);border:1px solid #9C8656;border-radius:3px;padding:6px 8px 4px;width:214px;color:#2B2119;box-shadow:0 2px 8px rgba(60,40,10,.18);font:400 11px/1.3 var(--mono)}
+.wheel b{display:block;font:400 15px/1.1 var(--hand);color:#A3261B;font-weight:400}
+.wheel svg{display:block;width:196px;height:196px}
+.wheel svg .ax{font:400 9.5px var(--mono);fill:#6E604E}.wheel svg .lg{font:500 12px var(--mono);fill:#2B2119}
+.wheel .nt{color:#6E604E;font-size:10.5px}
+.wheel[hidden]{display:none}
+.mp{display:flex;gap:10px;align-items:center;margin-bottom:4px}.mp svg{flex:none}
+.mi svg{display:inline-block;vertical-align:-4px;margin-right:4px}
+#phases label{min-height:26px;padding:3px 0}
+.maplibregl-popup-content .sw{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:5px;vertical-align:-1px;border:1px solid #2B2119}
+.tl .yr{min-width:150px}
+.tl .rng{flex:1;display:flex;flex-direction:column;gap:0;min-width:0}
+.tl .rng input{width:100%;height:20px}
+@media (max-width:800px){.wheel{display:none}.tl .yr{min-width:104px;font-size:15px}}
+.ptable td.r{text-align:right}
+.hzg{display:grid;grid-template-columns:240px 1fr;gap:12px;align-items:start}
+.hzg svg{width:240px;height:240px}
+.hz{max-height:calc(100% - 190px);overflow:auto;bottom:84px}
+.keys .sq{display:inline-block;width:11px;height:11px;border-radius:50%;border:1px solid #2B2119;vertical-align:-1px;margin-right:5px}
+.tl .ch{display:flex;gap:4px}
+.tl .ch button{background:#EFE3C4;color:#2B2119;border:1px solid #9C8656;font-size:11px;padding:6px 7px}
+@media (max-width:800px){.hzg{grid-template-columns:1fr}.hzg svg{width:200px;height:200px;margin:0 auto}.tl .ch{display:none}.hz{bottom:64px;max-height:52%}}
+.key .ends{display:flex;justify-content:space-between}
+.tl .eyel{font:400 19px/1 var(--hand);color:#A3261B;min-width:190px;text-align:center}
+.tl{width:min(820px,calc(100% - 130px))}
+.tl input[type=range]{min-width:140px}
+.lp{max-width:340px}
+@media (max-width:800px){.lp{max-width:none}.tl{width:calc(100% - 16px)}.tl input[type=range]{min-width:80px}}
+.tl .pcs{font-size:11.5px;color:#6E604E;white-space:nowrap}
+#opa{width:100%;accent-color:#A3261B}
+@media (max-width:800px){.tl .eyel{min-width:120px;font-size:15px}.tl .pcs{display:none}}
+</style></head>
+<body>
+<div class="topbar">
+  <a class="tb-name" href="#mapWrap">Can you see the sea?</a>
+  <span class="tb-k">Data study · 2026</span>
+  <nav class="tb-links"><a href="#essay">About</a><button class="theme" id="theme" aria-label="Toggle dark mode">◐</button><a href="https://doi.org/10.5281/zenodo.24106076">Paper</a><a class="x" href="https://github.com/Tristan-Hotham/sea-view">Data and code</a></nav>
+</div>
+<div class="mapband">
+  <div class="pane" id="mapWrap" data-fullscreen-map role="application" aria-label="Map of the United Kingdom by the distance to the nearest visible sea from each 1 km square">
+    <div id="map"></div>
+    <div class="nojs" id="nojs">Loading the map. It needs JavaScript and WebGL.</div>
+    <div class="cartouche" id="cartouche">
+      <button class="ct-toggle" id="ctToggle" aria-expanded="true" title="Show the title">Can you see the sea? <span aria-hidden="true">▾</span></button>
+      <button class="ct-fold" id="ctFold" title="Fold the title" aria-label="Fold the title">▴</button>
+      <div class="ct-body">
+        <div class="kicker"><b>Data study</b><span>2026</span></div>
+        <h1>Can you see <span class="a">the sea?</span></h1>
+        <p class="dek">Every 1 km square of the United Kingdom (the coloured area), by the nearest sea in view over the bare terrain, out to 50 km. Slide to raise your eyes; tap any square, or search a town.</p>
+        <div class="byline">Dr Tristan Hotham · Independent researcher · 2026</div>
+      </div>
+    </div>
+    <div class="ov ov-top">
+      <div class="srch"><input type="search" id="q" placeholder="Find a town or village" aria-label="Find a town or village" autocomplete="off"><ul class="sug" id="sug" role="listbox"></ul></div>
+      <div class="chips"><button class="chip" data-m="near" aria-pressed="true">Nearest sea</button><button class="chip" data-m="hz" aria-pressed="false">Share of horizon</button><button class="chip lyr" id="lyrBtn" aria-expanded="false" aria-controls="lp">Layers</button></div>
+    </div>
+    <div class="lp" id="lp" role="dialog" aria-label="Map layers">
+      <h4>Layers</h4>
+      <label><input type="checkbox" id="lyO" checked> Sea view of every 1 km square</label>
+      <label style="display:block;padding-left:24px">Opacity<input type="range" id="opa" min="0.2" max="1" step="0.05" value="0.82" aria-label="Opacity of the sea-view layer"></label>
+      <label><input type="checkbox" id="lyV" checked> Viewpoints used to check the model</label>
+      <label><input type="checkbox" id="lyF" checked> Farthest from any sea view</label>
+      <label><input type="checkbox" id="lyL" checked> Base map place names</label>
+      <h5>Coverage</h5>
+      <p style="margin:4px 0 0;font-size:12px;color:#6E604E">The UK only: Great Britain on the National Grid, Northern Ireland on the Irish Grid. Ireland, the Isle of Man and France are terrain only and are not coloured.</p>
+    </div>
+    <div class="keys" id="keys"><div class="key">
+      <div id="keyNear"><b>Nearest sea in view</b>
+        <div class="row"><span class="sw" style="background:#08306B"></span>under 2 km</div><div class="row"><span class="sw" style="background:#1B5A9C"></span>2 to 5 km</div><div class="row"><span class="sw" style="background:#3A84C0"></span>5 to 10 km</div><div class="row"><span class="sw" style="background:#6FA9D6"></span>10 to 20 km</div><div class="row"><span class="sw" style="background:#A6CBE6"></span>20 to 35 km</div><div class="row"><span class="sw" style="background:#D2E4F1"></span>35 to 50 km</div><div class="row"><span class="sw" style="background:#E6DCC8"></span>no sea within 50 km</div></div>
+      <div id="keyHz" hidden><b>Share of the horizon that is sea</b>
+        <div class="row"><span class="sw" style="background:#D2E4F1"></span>under 10%</div><div class="row"><span class="sw" style="background:#A6CBE6"></span>10 to 25%</div><div class="row"><span class="sw" style="background:#6FA9D6"></span>25 to 50%</div><div class="row"><span class="sw" style="background:#2D6FAE"></span>50 to 75%</div><div class="row"><span class="sw" style="background:#08306B"></span>75% or more</div><div class="row"><span class="sw" style="background:#E6DCC8"></span>no sea</div></div>
+      <div class="row" style="margin-top:4px"><span class="sq" style="background:#2D6FAE"></span>viewpoint: sea found</div><div class="row"><span class="sq" style="background:#B3202A"></span>viewpoint: not found</div><div class="row"><span class="sq" style="background:#D08A1E"></span>farthest from a sea view</div>
+    </div></div>
+    <div class="tl" id="tl" role="group" aria-label="Eye height">
+      <span class="eyel" id="eyeTxt">Standing, 1.7 m</span>
+      <input type="range" id="eye" min="0" max="3" step="1" value="0" aria-label="Eye height: 1.7, 5, 15 or 50 m">
+      <span class="pcs" id="eyePc"></span>
+      <span class="ch"><button data-eye="1.7">1.7 m</button><button data-eye="5">5 m</button><button data-eye="15">15 m</button><button data-eye="50">50 m</button></span>
+    </div>
+  </div>
+</div>
+<div class="wrap" id="essay">
+<p class="lede" style="margin-top:6px">Nowhere in the United Kingdom is more than 114 km from the coast, yet the sea is low and flat, the land gets in the way and the Earth curves. From how much of the country can you actually see it? For each of the UK's 244,595 squares of 1 km I stood an imaginary person in the middle, eyes 1.7 m above the bare ground, and traced a sight line every degree, out to 50 km, over the hills and valleys.</p>
+<div class="byline">Dr Tristan Hotham · Independent researcher · 2026 · Data: AWS Terrain Tiles; sea © OpenStreetMap contributors via OpenFreeMap (ODbL); Wikidata; 2011 Census · Base map: OpenFreeMap Positron</div>
+<div class="stats">
+<div class="stat"><b>26%</b><span>of UK land has the sea in view, standing on the bare ground</span></div>
+<div class="stat"><b>29%</b><span>from an upstairs window, 5 m up</span></div>
+<div class="stat"><b>23%</b><span>of people in Great Britain live at a settlement point that sees the sea</span></div>
+<div class="stat"><b>94 km</b><span>from any sea view: the farthest square, near Donington le Heath</span></div>
+</div>
+<p class="note" style="font-size:14px"><b>Read every figure as an upper bound:</b> bare terrain, with no buildings or trees. The headline is resolution-sensitive: finer terrain (about 88 m) lowers it by up to 7.3 points in the test areas. "Sea" here includes tidal estuaries and sea lochs.</p>
+
+<h2><span class="n">01 · The map</span>A quarter of the land</h2>
+<p>From 64,277 squares, 26.3% of the land, the sea is in view. Scotland, with its long ragged coast, mountains and sea lochs, sees it from 41% of its land, Wales from 34%, Northern Ireland from 22% and England, with its broad lowland middle, from only 16%. Where there is a view the nearest visible sea is typically about 6 km away, and it is usually a slice: the median square with a view sees sea across 14% of the horizon. Switch the map to "Share of horizon" to find the 2,789 squares with sea across more than half of it, like <a href="#" data-go="-5.69,50.07,10">Land's End</a>.</p>
+<div class="figure"><img src="img/map.jpg" alt="Map of the UK with coasts in shades of blue by the distance to the nearest visible sea and most of central England in sand, with no sea in view" loading="lazy"><p class="src">Distance to the nearest sea in view from every 1 km square, eyes 1.7 m.</p></div>
+<div class="figure"><img src="img/nations.jpg" alt="Bar charts of the share of land with a sea view by nation and eye height, and of land and people in Great Britain" loading="lazy"><p class="src">Land with a sea view by nation and eye height (left); land and people in Great Britain (right).</p></div>
+
+<h2><span class="n">02 · Inland</span>How far the sea stays in view</h2>
+<p>Right on the coast nearly every square sees the sea (98% within a kilometre), but 7% of squares within 2 km of it do not, behind dunes, cliffs or the slope of the land. Inland, height decides. On ground below 50 m half the squares have lost the sea by about 3 km from the coast; on ground of 150 to 300 m the half-way point is about 9 km in, and higher ground, mostly mountain country where the next peak hides the sea, does no better at that mark, though its tops see the sea more often further in: 80 squares above 300 m see it from 40 km or more inland. Raise your eyes with the slider: from an upstairs window 29% of the land sees the sea, from a fifth floor 35%, from a 50 m tower 45%.</p>
+<div class="figure"><img src="img/profile.jpg" alt="Line chart of the share of squares seeing the sea against distance from the coast, by ground height; lower ground loses the sea sooner" loading="lazy"><p class="src">Share of squares with a sea view by distance from the coast and ground height.</p></div>
+<div class="figure"><img src="img/eyes.jpg" alt="Four small maps showing the land with a sea view spreading inland as eye height rises from 1.7 to 50 m" loading="lazy"><p class="src">Land with the sea in view at four eye heights.</p></div>
+
+<h2><span class="n">03 · Inland England</span>The sea-view desert</h2>
+<p>The square farthest from any square with a sea view is near <a href="#" data-go="-1.387,52.700,9">Donington le Heath</a> in Leicestershire, 94 km from one. The square farthest from the coast itself is 114 km from it, near Akeley. Most people in Great Britain live in lowland towns, many inland: 23% live at a settlement point where the terrain allows a sea view, 25% if they look from an upstairs window.</p>
+<div class="figure"><img src="img/farthest.jpg" alt="Map of central England shaded by distance to the nearest square with a sea view, with a star at the farthest square" loading="lazy"><p class="src">Distance to the nearest square with a sea view, central England.</p></div>
+
+<h2><span class="n">04 · Checking</span>Hills with a famous view</h2>
+<p>I checked the model against 10 viewpoints whose sea view is written down (blue and red dots on the map). It finds the sea from 8 at the height of the terrain data and 9 at their real summit heights, which the coarse terrain rounds down. From <a href="#" data-go="-2.298,53.868,9">Pendle Hill</a> at its real 557 m the model sees the Lancashire coast about 40 km away, as George Fox did in 1652: "I saw the sea bordering upon Lancashire". It never finds the "Bristol Channel" view from <a href="#" data-go="-2.340,52.105,9">Worcestershire Beacon</a>, even out to 100 km.</p>
+<div class="figure"><img src="img/fans.jpg" alt="Three maps of sight lines from Pendle Hill, Leith Hill and Worcestershire Beacon, red where they reach visible sea" loading="lazy"><p class="src">Sight lines every half degree from three viewpoints, ending at the first visible sea.</p></div>
+
+<h2><span class="n">05 · How I did this</span>Sight lines over bare ground</h2>
+<p><b>Land and sea.</b> Heights from the open AWS Terrain Tiles at zoom 9 (about 175 m); the sea is OpenStreetMap's coastline, which runs up tidal estuaries and sea lochs, from OpenFreeMap tiles. <b>Sight lines.</b> From the centre of every Ordnance Survey 1 km square in Great Britain and Irish Grid square in Northern Ireland, a line every degree, in steps of about 90 m, out to 50 km. A point of sea is visible if it shows above everything nearer along the line, allowing for the curve of the Earth and standard refraction of light near the ground (k = 0.13). The plan, with every check, was written before the first result.</p>
+<p><b>Checks.</b> Looking 25 or 100 km out, no refraction or strong refraction, leaving out estuaries and narrow sea lochs, needing the sea on at least three sight lines, twice as many sight lines, four points per square, sharper terrain (about 88 m) and random height errors: across all of these the share of land with a sea view stays between 22% and 27%. Sharper terrain lowers it most: with heights every 88 m the share falls in all four test areas, by up to 7.3 points (about 11% of its value overall), so the headline is resolution-sensitive and, if anything, generous.</p>
+<p><b>What this cannot say.</b> Every figure is an upper bound. The terrain has no buildings, trees or hedges, which hide the sea from many streets: the map shows where the land itself allows a view on a clear day. "Sea" includes tidal estuaries and sea lochs, as in OpenStreetMap's coastline. The coarse terrain rounds off summits and fills narrow valleys, and the answer can change within a square. Haze often hides sea far away. Tides move the water's edge by hundreds of metres in places. People are placed at one Wikidata point per town or village, weighted by 2011 Census constituency populations.</p>
+<details><summary>Sources and licences</summary>
+<ul class="plain">
+<li>Terrain: <a href="https://registry.opendata.aws/terrain-tiles/">AWS Terrain Tiles</a> (Mapzen and Tilezen; <a href="https://github.com/tilezen/joerd/blob/master/docs/attribution.md">sources and attribution</a>: SRTM, GMTED2010, ETOPO1 and others).</li>
+<li>Sea: © OpenStreetMap contributors (ODbL), via <a href="https://openfreemap.org/">OpenFreeMap</a> vector tiles, release 20261101_080013_pt.</li>
+<li>Settlements: Wikidata (CC0). Population: 2011 Census by 2010 Westminster constituency (ONS, OGL v3.0). Counties: ONS (OGL v3.0). Context outlines: Natural Earth.</li>
+<li>Viewpoints: Wikipedia, National Trust, South Downs National Park Authority, Pendle Radicals, Cornwall Guide, Wikishire, UKHillwalking, MountainViews (quotations in data/validation.csv).</li>
+<li>Base map: OpenFreeMap Positron (OpenStreetMap, ODbL). MapLibre GL JS 4.7.1 (BSD 3-Clause).</li>
+<li>Sea-view data derived from OpenStreetMap are under the ODbL; text and figures CC BY 4.0; code MIT.</li>
+</ul></details>
+<div class="cta"><a class="p" href="https://doi.org/10.5281/zenodo.24106076">Read the paper</a><a href="https://github.com/Tristan-Hotham/sea-view">Data and code</a><a href="https://blog.tristanhotham.com/2026/10/31/sea-view/">Blog post</a></div>
+
+<footer>
+<p>Dr Tristan Hotham, Independent researcher. ORCID <a href="https://orcid.org/0000-0003-4931-9349">0000-0003-4931-9349</a>.</p>
+<p>Cite as: Hotham, T. (2026) Can you see the sea? A line-of-sight census of sea views from every 1 km square of the United Kingdom. Zenodo. <a href="https://doi.org/10.5281/zenodo.24106076">10.5281/zenodo.24106076</a></p>
+<p>Code: <a href="https://github.com/Tristan-Hotham/sea-view">github.com/Tristan-Hotham/sea-view</a> (MIT). Text and figures CC BY 4.0; sea-view data derived from OpenStreetMap under the ODbL.</p>
+<p>I wrote the text, with drafting and editing assistance from Claude (Anthropic), which also helped prepare the analysis code. I reviewed and checked all text and results.</p>
+</footer>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
+<script src="js/page.js?v=2026a"></script>
+<!-- map-fullscreen v1 -->
+<style id="mfs-style">
+.mfs-btn{position:absolute;top:10px;right:10px;z-index:1001;width:34px;height:34px;border:2px solid rgba(0,0,0,.25);border-radius:4px;background:#fff;color:#222;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;box-shadow:0 1px 4px rgba(0,0,0,.2)}
+.mfs-btn:hover{background:#f2f2f2}
+.mfs-btn svg{width:18px;height:18px}
+.mfs-host.mfs-btn-left .mfs-btn{right:auto;left:54px}
+.mfs-fake{position:fixed!important;inset:0!important;width:100vw!important;height:100vh!important;height:100dvh!important;max-width:none!important;max-height:none!important;margin:0!important;z-index:100000!important;border-radius:0!important}
+html.mfs-lock,html.mfs-lock body{overflow:hidden!important}
+:fullscreen.mfs-host{width:100vw!important;height:100vh!important;max-width:none!important;max-height:none!important;margin:0!important;border-radius:0!important}
+</style>
+<script id="mfs-script">
+(function(){
+  var ICON_OPEN='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg>';
+  var ICON_CLOSE='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M9 4v5H4M15 4v5h5M9 20v-5H4M15 20v-5h5"/></svg>';
+  function poke(){setTimeout(function(){window.dispatchEvent(new Event('resize'));},60);setTimeout(function(){window.dispatchEvent(new Event('resize'));},400);}
+  function realFS(){return document.fullscreenElement||document.webkitFullscreenElement;}
+  function add(el){
+    if(el.__mfs)return; el.__mfs=1;
+    var cs=getComputedStyle(el); if(cs.position==='static')el.style.position='relative';
+    el.classList.add('mfs-host');
+    // avoid clashing with a top-right Leaflet control (e.g. "Map layers")
+    var tr=el.querySelector('.leaflet-top.leaflet-right');
+    if(tr&&tr.children.length){ el.classList.add('mfs-btn-left'); }
+    var b=document.createElement('button'); b.type='button'; b.className='mfs-btn';
+    b.title='Full screen map'; b.setAttribute('aria-label','Full screen map'); b.innerHTML=ICON_OPEN;
+    ['click','dblclick','mousedown','touchstart','wheel'].forEach(function(t){b.addEventListener(t,function(e){e.stopPropagation();},{passive:t!=='click'});});
+    function setIcon(on){b.innerHTML=on?ICON_CLOSE:ICON_OPEN;b.title=on?'Exit full screen':'Full screen map';b.setAttribute('aria-label',b.title);}
+    function exitFake(){el.classList.remove('mfs-fake');document.documentElement.classList.remove('mfs-lock');setIcon(false);poke();}
+    b.addEventListener('click',function(e){
+      e.preventDefault();
+      if(el.classList.contains('mfs-fake')){exitFake();return;}
+      if(realFS()){(document.exitFullscreen||document.webkitExitFullscreen).call(document);return;}
+      var req=el.requestFullscreen||el.webkitRequestFullscreen;
+      if(req){ try{ var p=req.call(el); if(p&&p.catch)p.catch(function(){el.classList.add('mfs-fake');document.documentElement.classList.add('mfs-lock');setIcon(true);poke();}); }catch(err){el.classList.add('mfs-fake');document.documentElement.classList.add('mfs-lock');setIcon(true);poke();} }
+      else { el.classList.add('mfs-fake');document.documentElement.classList.add('mfs-lock');setIcon(true);poke(); }
+    });
+    document.addEventListener('keydown',function(e){if(e.key==='Escape'&&el.classList.contains('mfs-fake'))exitFake();});
+    ['fullscreenchange','webkitfullscreenchange'].forEach(function(t){document.addEventListener(t,function(){setIcon(realFS()===el);poke();});});
+    el.appendChild(b);
+  }
+  function scan(){
+    var els=document.querySelectorAll('[data-fullscreen-map], .leaflet-container, .maplibregl-map, .mapboxgl-map');
+    els.forEach(function(el){
+      if(el.closest('.mfs-host')&&!el.classList.contains('mfs-host'))return;
+      var r=el.getBoundingClientRect(); if(r.width<200||r.height<150)return;
+      add(el);
+    });
+  }
+  function start(){scan(); var n=0; var t=setInterval(function(){scan(); if(++n>20)clearInterval(t);},500);}
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',start); else start();
+})();
+</script>
+<!-- /map-fullscreen -->
+
+<script src="https://maps.tristanhotham.com/assets/site-nav.js" defer></script>
+</body>
+</html>
